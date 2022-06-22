@@ -1,0 +1,45 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #000;
+}
+svg {
+    width: 400px;
+    /* fill プロパティが要素の中身の色を定義するのに対し、
+    stroke プロパティは、要素のアウトラインの色を定義します。アウトラインのみを表示させたい場合は、fill: none を指定すればOK。 */
+    fill: none;
+    position: absolute;
+}
+svg:nth-child(2) {
+    /* 2つ目につける事でいい感じのぼかしになる */
+    /* filter は CSS のプロパティで、
+    ぼかしや色変化などのグラフィック効果を要素に適用します。フィルターは画像、背景、境界の描画を調整するためによく使われます。 */
+    filter: blur(40px);
+}
+svg path {
+    d: path("M0,25 C150,110 150,-60 300,25");
+    /* stroke = 線の色 */
+    stroke: #ff0092;
+    /* stroke-width = 線の幅 */
+    stroke-width: 50;
+    /* 線の先端の丸み */
+    stroke-linecap: round;
+    transform: translate(50px, 50px);
+    animation: animate 2s ease-in-out infinite;
+}
+@keyframes animate {
+    0% {
+        stroke: #ff0092;
+        d: path("M0,25 C150,110 150,-60 300,25")
+    }
+    50% {
+        stroke: #00ff00;
+        d: path("M0,25 C160,-50 140,110 300,25")
+    }
+}
